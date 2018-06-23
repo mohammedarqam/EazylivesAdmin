@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar color="primary" >
+    <ion-title>Add Function Hall</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<form [formGroup]="functionHall" (ngSubmit)="addFunctionHall()">
+
+  <ion-item>
+    <ion-label floating>Function Hall Name</ion-label>
+    <ion-input type="text" formControlName="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Rent</ion-label>
+    <ion-input type="number" formControlName="rent"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Capacity</ion-label>
+    <ion-input type="number" formControlName="capacity"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Function Hall Address</ion-label>
+    <ion-textarea formControlName="address"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Contact Name</ion-label>
+    <ion-input type="text" formControlName="cName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Contact Email</ion-label>
+    <ion-input type="email" formControlName="cEmail"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Contact Number</ion-label>
+    <ion-input type="tel" formControlName="cNum"></ion-input>
+  </ion-item>
+
+
+<button ion-button color="danger" round type="submit" [disabled]="!functionHall.valid">Submit</button>
+</form>
+  
+
+
+
+
+</ion-content>

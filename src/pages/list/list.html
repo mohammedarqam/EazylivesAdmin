@@ -1,23 +1,29 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Users</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+
+<ion-content padding>
+
+<ion-list no-lines>
+      <ion-item>
+        <h2 item-end>Number of Users : </h2>
+        <h2 class="heads" item-end>{{totUsers}}</h2>
+      </ion-item>
+
+
+
+      <ion-item *ngFor="let user of users" navPush="UserDetailsPage" [navParams]='{user : user}'>
+    <ion-avatar item-start>
+      <img [(src)]="user.Pic" onerror="if (this.src != 'assets/imgs/no-user.png') this.src = 'assets/imgs/no-user.png';" >
+    </ion-avatar>
+    <h2>{{user.Name}}</h2>
+    <p>{{user.Email}}</p>
+  </ion-item>
+</ion-list>
 </ion-content>

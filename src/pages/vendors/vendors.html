@@ -1,0 +1,75 @@
+<ion-content padding>
+  <ion-item no-lines class="content">
+    <h1 class="title">Vendors</h1>
+  </ion-item>
+
+
+
+<!-- Unverified Vendors List -->
+
+<ion-card>
+  <ion-item color="primary" (click)="tUV()">
+    Unverified Vendors
+    <ion-icon name="md-add-circle" *ngIf="!uVerified" item-end></ion-icon>
+    <ion-icon name="md-remove-circle" *ngIf="uVerified" item-end></ion-icon>
+  </ion-item>
+</ion-card>
+
+<ion-list *ngIf="uVerified" >
+
+  <ion-card  *ngFor="let uvendor of unverifiedV" padding >
+  <ion-item>
+    <h1>{{uvendor.Name}}</h1>
+    <h2>Category : {{uvendor.Category}}</h2>
+    <h2>Email : {{uvendor.Email}}</h2>
+  </ion-item>
+  
+  <ion-buttons end>
+
+    <button ion-button (click)="deleteConfirm(uvendor.key)" color="danger">Reject</button>
+    <button ion-button (click)="verifyVendor(uvendor)" color="primary">Verify</button>
+  </ion-buttons>
+
+  </ion-card>
+
+
+
+
+
+
+</ion-list>
+
+<!-- Verified Vendors List -->
+
+<ion-card>
+  <ion-item color="primary" (click)="tV()">
+    Verified Vendors
+    <ion-icon name="md-add-circle" *ngIf="!Verified" item-end></ion-icon>
+    <ion-icon name="md-remove-circle" *ngIf="Verified" item-end></ion-icon>
+  </ion-item>
+</ion-card>
+
+<ion-list *ngIf="Verified" >
+  <ion-card *ngFor="let vendor of verifiedV" padding >
+    <ion-item>
+    <h1>{{vendor.Name}}</h1>
+    <ion-icon color="primary" item-end name="ios-ribbon"></ion-icon>
+    <h2>Category : {{vendor.Category}}</h2>
+    <h2>Email : {{vendor.Email}}</h2>
+    </ion-item>
+  </ion-card>
+
+
+
+
+
+
+
+</ion-list>
+
+
+
+
+
+
+</ion-content>

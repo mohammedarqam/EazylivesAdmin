@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines class="content">
+    <h1 class="title">Function Halls</h1>
+  </ion-item>
+
+
+
+<ion-list no-lines>
+  <ion-item>
+    <h2 item-end>Number of Function Halls : </h2>
+    <h2 class="heads" item-end>{{totFunctions}}</h2>
+  </ion-item>
+
+
+
+  <ion-item *ngFor="let function of functions" navPush="FunctionDetailsPage" [navParams]='{function : function}'>
+    <h2 color="danger" >{{function.name}}</h2>
+    <p>{{function.address}}</p>
+  </ion-item>
+</ion-list>
+
+
+
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="newFunction()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+
+
+</ion-content>

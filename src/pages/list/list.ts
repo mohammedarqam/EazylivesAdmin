@@ -1,37 +1,51 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import * as firebase from 'firebase';
+
+
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  userRef = firebase.database().ref("Users/");
+  public users: Array<any> = [];
+  totUsers: number = 0;
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+  ionViewDidEnter() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
     });
+    loading.present();
+    this.userRef.on('value', itemSnapshot => {
+      this.users = [];
+      itemSnapshot.forEach(itemSnap => {
+        var temp = itemSnap.val();
+        temp.key = itemSnap.key;
+        this.users.push(temp);
+        this.totUsers = this.users.length;
+
+        return false;
+      });
+    });
+    loading.dismiss();
   }
+
+
+
+
+  viewUsers(){
 }
+
+}
+
+
+
+// WEBPACK FOOTER //
+// ./src/pages/list/list.ts
