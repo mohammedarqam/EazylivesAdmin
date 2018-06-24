@@ -31,20 +31,6 @@ export class BannersPage {
   ionViewDidLoad() {
     this.getBanners();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   getBanners() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -63,21 +49,6 @@ export class BannersPage {
       loading.dismiss();
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   gtAddBanner(){
     this.navCtrl.push(AddBannersPage);

@@ -45,7 +45,3 @@ export class ListPage {
 
 }
 
-
-
-// WEBPACK FOOTER //
-// ./src/pages/list/list.ts

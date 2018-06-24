@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{user.Name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <img [(src)]="user.Pic" onerror="if (this.src != 'assets/imgs/no-user.png') this.src = 'assets/imgs/no-user.png';" />
+    <ion-card-content>
+      <ion-card-title color="danger">
+        {{user.Name}}
+      </ion-card-title>
+  
+  <ion-item>
+    <p class="heads" item-start  >Email</p>
+    <p item-end >{{user.Email}}</p>
+  </ion-item>    
+  <ion-item>
+    <p class="heads" item-start>Phone</p>
+    <p item-end>{{user.Phone}}</p>
+  </ion-item>
+  
+  
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

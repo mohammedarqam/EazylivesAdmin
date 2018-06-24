@@ -12,7 +12,59 @@
   </ion-item>
   
   <ion-grid>
-  
+
+  <ion-row>
+
+<ion-col col-6>
+  <ion-card padding>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="ios-person" class="iconsize" color="primary" item-start></ion-icon>
+        <h2>Total Users</h2>
+            </ion-item>
+            <ion-item class="mainCur">
+          <h1>{{totUsers}}</h1>
+          <h1>Users</h1>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-col>
+
+<ion-col col-6>
+    <ion-card padding>
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="ios-pin" class="iconsize" color="primary" item-start></ion-icon>
+          <h2>Total Venues</h2>
+              </ion-item>
+              <ion-item class="mainCur">
+            <h1>{{totFunctions}}</h1>
+            <h1>Venues</h1>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+
+  <ion-col col-6>
+      <ion-card padding>
+        <ion-card-content>
+          <ion-item>
+            <ion-icon name="ios-people" class="iconsize" color="primary" item-start></ion-icon>
+            <h2>Total Vendors</h2>
+                </ion-item>
+                <ion-item class="mainCur">
+              <h1>{{totVendors}}</h1>
+              <h1>Vendors</h1>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+      
+
+</ion-row>
+
+<!--
 <ion-row>
   <ion-col col-4  >
   <ion-card (click)="addFunction()" >
@@ -32,7 +84,7 @@
 
 
 </ion-row>
-
+-->
 
 </ion-grid>
 </ion-content>
