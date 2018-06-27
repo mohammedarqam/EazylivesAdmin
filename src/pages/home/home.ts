@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController,LoadingController, MenuController } from 'ionic-angular';
+import { NavController,LoadingController, MenuController, IonicPage } from 'ionic-angular';
 import * as firebase from 'firebase';
 
+
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -32,17 +34,13 @@ ionViewDidEnter() {
 }
 
 getNumbers(){
+  //Loading
   let loading = this.loadingCtrl.create({
     content: 'Please wait...'
   });
   loading.present();
-this.getUsers();
-this.getVenues();
-this.getVendors();
-loading.dismiss();
-}
 
-getUsers(){
+  //getUsers
   this.userRef.once('value', itemSnapshot => {
     this.users = [];
     itemSnapshot.forEach(itemSnap => {
@@ -50,10 +48,8 @@ getUsers(){
       this.totUsers = this.users.length;
       return false;
     });
-  });
-}
-
-getVenues(){
+  });  
+  //getVenues
   this.functionRef.once('value', itemSnapshot => {
     this.functions = [];
     itemSnapshot.forEach(itemSnap => {
@@ -62,9 +58,7 @@ getVenues(){
       return false;
     });
   });
-}
-
-getVendors(){
+  //getVendors
   this.vendorRef.once('value', itemSnapshot => {
     this.vendors = [];
     itemSnapshot.forEach(itemSnap => {
@@ -72,7 +66,10 @@ getVendors(){
       this.totVendors = this.vendors.length;
       return false;
     });
-  });
+  }).then(()=>{
+    loading.dismiss();
+});
+
 }
 
 

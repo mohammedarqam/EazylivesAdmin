@@ -65,8 +65,9 @@ export class VendorsPage {
 
         return false;
       });
-    });
-    loading.dismiss();
+    }).then(()=>{
+      loading.dismiss();
+    })  ;
   }
 
 

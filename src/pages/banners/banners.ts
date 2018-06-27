@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, ModalController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import moment from 'moment';
-import { AddBannersPage } from '../add-banners/add-banners';
 
 
 
@@ -51,12 +49,12 @@ export class BannersPage {
   }
 
   gtAddBanner(){
-    this.navCtrl.push(AddBannersPage);
+    this.navCtrl.push("AddBannersPage");
   }
 
 
 
-  deleteBanner(key) {
+  deleteBanner(banner) {
     let confirm = this.alertCtrl.create({
       title: 'Are you sure you want to Delete this Banner ?',
       message: 'This banner cannot be recovered again',
@@ -70,7 +68,7 @@ export class BannersPage {
         {
           text: 'Yes, I understand',
           handler: () => {
-            this.delete(key);
+            this.delete(banner);
           }
         }
       ]
@@ -79,14 +77,29 @@ export class BannersPage {
   }
 
 
-
-  delete(key) {
-    this.bannerRef.child(key).remove().then(() => {
-      this.getBanners();
-      this.presentToast();
+  delete(banner) {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
     });
-  }
+    loading.present();
 
+    firebase.storage().ref("Banners/").child(banner.Name).delete().then(() => {
+      this.bannerRef.child(banner.key).remove().then(() => {
+        this.getBanners();
+        this.presentToast();
+      }).then(()=>{
+        loading.dismiss();
+      }) ;
+  
+    });
+ }
+
+
+
+
+/*  delete(banner) {
+  }
+*/
 
 
 

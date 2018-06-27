@@ -1,14 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { FunctionHallListPage } from '../pages/function-hall-list/function-hall-list';
-import { BannersPage } from '../pages/banners/banners';
-import { VendorsPage } from '../pages/vendors/vendors';
-import { MainLoginPage } from '../pages/main-login/main-login';
 import * as firebase from 'firebase';
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +7,7 @@ import * as firebase from 'firebase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = "HomePage";
   activePage: any;
 
 
@@ -26,11 +17,11 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage, icon: "home" },
-      { title: 'Users List', component: ListPage, icon: "ios-person" },
-      { title: 'FunctionHalls List', component: FunctionHallListPage, icon: "ios-pin"  },
-      { title: 'Deal Banners', component: BannersPage, icon: "md-images" },
-      { title: 'Vendors', component: VendorsPage, icon: "ios-people" },
+      { title: 'Home', component: "HomePage", icon: "home" },
+      { title: 'Users List', component: "ListPage", icon: "ios-person" },
+      { title: 'FunctionHalls List', component: "FunctionHallListPage", icon: "ios-pin"  },
+      { title: 'Deal Banners', component: "BannersPage", icon: "md-images" },
+      { title: 'Vendors', component: "VendorsPage", icon: "ios-people" },
 
 
     ];
@@ -59,7 +50,7 @@ export class MyApp {
       console.log(error.message);
     });
   */
- this.nav.setRoot(MainLoginPage);
+ this.nav.setRoot("MainLoginPage");
  
 }
 

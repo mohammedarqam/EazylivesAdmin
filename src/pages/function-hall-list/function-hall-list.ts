@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController  } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { AddFunctionHallPage } from '../add-function-hall/add-function-hall';
 
 @IonicPage()
 @Component({
@@ -22,7 +21,7 @@ export class FunctionHallListPage {
       content: 'Please wait...'
     });
     loading.present();
-    this.functionRef.on('value', itemSnapshot => {
+    this.functionRef.once('value', itemSnapshot => {
       this.functions = [];
       itemSnapshot.forEach(itemSnap => {
         var temp = itemSnap.val();
@@ -32,12 +31,13 @@ export class FunctionHallListPage {
 
         return false;
       });
-    });
-    loading.dismiss();
+    }).then(()=>{
+      loading.dismiss();
+    })  ;
   }
 
 newFunction(){
-  this.navCtrl.push(AddFunctionHallPage);
+  this.navCtrl.push("AddFunctionHallPage");
 }
 
 

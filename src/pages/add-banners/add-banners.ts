@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import moment from 'moment';
 import * as firebase from 'firebase';
-import { BannersPage } from '../banners/banners';
 
 
 @IonicPage()
@@ -17,8 +16,7 @@ export class AddBannersPage {
   img2: any;
   url: any;
 
-  bannerRef = firebase.database().ref("Banners");
-
+imageRef = firebase.storage().ref("Banners/" + this.order);
 
   constructor(
     public navCtrl: NavController,
@@ -27,8 +25,6 @@ export class AddBannersPage {
     public toastCtrl: ToastController, ) {
   }
 
-
-
   UploadPic() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -36,28 +32,23 @@ export class AddBannersPage {
     loading.present();
 
 
-    firebase.storage().ref("Banners/" + this.order).put(this.img2).then((Upic) => {
-      this.url = Upic.downloadURL;
-      this.sendPost();
-    }).then(() => {
-      this.presentToast();
-      this.img1 = null;
-      this.order = null;
-    }).then(() => {
-      loading.dismiss();
-    });
+    firebase.storage().ref("Banners/" + this.order).put(this.img2).then(()=>{
+      firebase.storage().ref("Banners/" + this.order).getDownloadURL().then((dURL)=>{
+        this.url = dURL;
+      }).then(()=>{
+        firebase.database().ref("Banners").push({
+          Name : this.order,
+          Image : this.url,
+          PostTime : moment().format("DD/MMM-HH:mm")
+        }).then(()=>{
+          this.navCtrl.setRoot("BannersPage");
+        }).then(()=>{
+          this.presentToast();
+          loading.dismiss();
+        })
+      })
+    })
   }
-
-  sendPost() {
-    this.bannerRef.push({
-      PostTime: moment().format("DD/MMM-HH:mm"),
-      Image: this.url,
-    }).then(() => {
-      this.navCtrl.setRoot(BannersPage);
-    });
-
-  }
-
 
   presentToast() {
     let toast = this.toastCtrl.create({

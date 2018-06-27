@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, IonicPage } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 
-
+@IonicPage()
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -23,7 +23,7 @@ export class ListPage {
       content: 'Please wait...'
     });
     loading.present();
-    this.userRef.on('value', itemSnapshot => {
+    this.userRef.once('value', itemSnapshot => {
       this.users = [];
       itemSnapshot.forEach(itemSnap => {
         var temp = itemSnap.val();
@@ -33,15 +33,14 @@ export class ListPage {
 
         return false;
       });
-    });
-    loading.dismiss();
+    }).then(()=>{
+      loading.dismiss();
+    }) ;
   }
 
 
 
 
-  viewUsers(){
-}
 
 }
 

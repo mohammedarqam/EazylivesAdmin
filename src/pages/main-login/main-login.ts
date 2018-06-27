@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -22,7 +21,7 @@ export class MainLoginPage {
   }
 
 gtHome(){
-  this.navCtrl.setRoot(HomePage)
+  this.navCtrl.setRoot("HomePage")
 }
 
 
