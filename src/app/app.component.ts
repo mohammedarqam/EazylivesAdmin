@@ -19,7 +19,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: "HomePage", icon: "home" },
       { title: 'Users List', component: "ListPage", icon: "ios-person" },
-      { title: 'FunctionHalls List', component: "FunctionHallListPage", icon: "ios-pin"  },
+      { title: 'FunctionHalls', component: "FunctionHallListPage", icon: "ios-pin"  },
+      { title: 'Add FunctionHall', component: "AddFunctionHallPage", icon: "ios-pin"  },
       { title: 'Deal Banners', component: "BannersPage", icon: "md-images" },
       { title: 'Vendors', component: "VendorsPage", icon: "ios-people" },
 

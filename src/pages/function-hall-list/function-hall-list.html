@@ -13,19 +13,27 @@
 
 
 
-<ion-list no-lines>
-  <ion-item>
-    <h2 item-end>Number of Function Halls : </h2>
-    <h2 class="heads" item-end>{{totFunctions}}</h2>
+  <ion-item no-lines class="content" >
+    <ion-icon name="ios-pin" color="primary" item-end ></ion-icon>
+    <h2 class="heads"  item-end>{{totFunctions}}</h2>
   </ion-item>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let function of functions" navPush="FunctionDetailsPage" [navParams]='{function : function}' >
+        <ion-card padding >
+          <ion-card-content>
+            <h1>{{function.key}} </h1>
+            <h2>{{function.ContactPerson}} </h2>
+            <h2>{{function.MobileContact}} </h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
-  <ion-item *ngFor="let function of functions" navPush="FunctionDetailsPage" [navParams]='{function : function}'>
-    <h2 color="danger" >{{function.name}}</h2>
-    <p>{{function.address}}</p>
-  </ion-item>
-</ion-list>
+
 
 
 
