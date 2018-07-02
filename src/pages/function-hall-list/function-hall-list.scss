@@ -1,5 +1,18 @@
 page-function-hall-list {
 .card{
     height: 200px;
+    border-radius: 2%;
+    box-shadow : 0 5px 5px 0 rgba(0,0,0,0.25);
+}
+.footerDiv{
+    position: absolute;
+    bottom: 0;
+    transform: translate(10%)
+}
+
+
+
+.name{
+    text-align: center;
 }
 }

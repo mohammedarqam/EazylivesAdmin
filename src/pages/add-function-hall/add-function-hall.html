@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header  >
     <ion-navbar color="primary">
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -9,20 +9,19 @@
 <ion-content padding>
     <ion-item no-lines class="content">
         <h1 class="title">Add Function Hall</h1>
-    <ion-buttons item-end>
-      <button ion-button outline (click)="save()">Save</button>
-      <button ion-button (click)="complete()">Complete</button>
-    </ion-buttons>
     </ion-item>
     
 <ion-card>
   <ion-card-content>
+
   <ion-grid>
 
 
     <ion-row>
     <ion-item>
-      <ion-label stacked color="primary" >Function Hall Name</ion-label>
+      <ion-label stacked color="primary" >
+        <p ion-text color="danger" >*</p>
+        Function Hall Name</ion-label>
       <ion-input type="text"  (ionChange)="capsName(name)" autofocus [(ngModel)]="name"></ion-input>
     </ion-item>
     </ion-row>
@@ -55,7 +54,9 @@
   
   <ion-row>
       <ion-item>
-      <ion-label stacked color="primary">Contact Person Name</ion-label>
+      <ion-label stacked color="primary">
+          <p ion-text color="danger" >*</p>
+          Contact Person Name</ion-label>
       <ion-input type="text" (ionChange)="capsContactPerson(ContactPerson)" [(ngModel)]="ContactPerson"></ion-input>
     </ion-item>
   </ion-row>
@@ -69,7 +70,9 @@
   
   <ion-row>
     <ion-item>
-        <ion-label stacked color="primary">Mobile Contact</ion-label>
+        <ion-label stacked color="primary">
+            <p ion-text color="danger" >*</p>
+            Mobile Contact</ion-label>
         <ion-input type="number"  [(ngModel)]="MobileContact"></ion-input>
     </ion-item>
   </ion-row>
@@ -84,20 +87,24 @@
   
 <ion-row>
 <ion-item>
-      <ion-label stacked color="primary">Maximum Capacity</ion-label>
+      <ion-label stacked color="primary">
+          <p ion-text color="danger" >*</p>
+          Maximum Capacity</ion-label>
       <ion-input type="number" [(ngModel)]="MaxCapacity"></ion-input>
     </ion-item>  
   </ion-row>
   
   <ion-row>
   <ion-item>
-    <ion-label stacked color="primary">Minimum Capacity</ion-label>
+    <ion-label stacked color="primary">
+        <p ion-text color="danger" >*</p>
+        Minimum Capacity</ion-label>
     <ion-input type="number" [(ngModel)]="MinCapacity"></ion-input>
   </ion-item>
   </ion-row>
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked > Crocery Variety</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="CroceryVariety"></ion-checkbox>
@@ -113,7 +120,7 @@
 
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >Cutlery Available</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="CutleryAvailable"></ion-checkbox>
@@ -129,7 +136,7 @@
 
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >Decor Included</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="DecorIncluded"></ion-checkbox>
@@ -145,7 +152,7 @@
 
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >Electrical Decors</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="ElectricalDecors"></ion-checkbox>
@@ -160,7 +167,7 @@
   </ion-row>
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >ReadyMade Stage</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="ReadyMadeStage"></ion-checkbox>
@@ -175,7 +182,7 @@
   </ion-row>
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >MeterConsumptionIncluded</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="MeterConsumptionIncluded"></ion-checkbox>
@@ -190,7 +197,7 @@
   </ion-row>
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >Butler And Bohis Included</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="ButlerAndBohisIncluded"></ion-checkbox>
@@ -205,7 +212,7 @@
   </ion-row>
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >Generator Included</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="GeneratorIncluded"></ion-checkbox>
@@ -220,7 +227,7 @@
   </ion-row>
 
   <ion-row>
-    <ion-col col-2>
+    <ion-col >
       <ion-label stacked >A/C</ion-label>
     <ion-item>
       <ion-checkbox [(ngModel)]="ACArrangementCharges"></ion-checkbox>
@@ -276,10 +283,11 @@
     </ion-item>
   </ion-row>
 
+  <ion-row>
+    <button ion-button color="primary" [disabled]="!name||!ContactPerson||!MobileContact||!MaxCapacity||!MinCapacity" block (click)="save()" >Save and Upload Images</button>
+  </ion-row>
 
 </ion-grid>
-
-
   </ion-card-content>
 </ion-card>  
 

@@ -49,16 +49,13 @@ export class AddFunctionHallPage {
   NotePoint : string = '' ;
   ExtraPoints : string = '' ;
 
-
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams,
   public loadingCtrl : LoadingController,
   public toastCtrl : ToastController,
 ) {
-
-
-  }
+}
 
   save(){
     let loading = this.loadingCtrl.create({
@@ -102,7 +99,7 @@ export class AddFunctionHallPage {
       NotePoint :this.NotePoint,
       ExtraPoints :this.ExtraPoints,
     }).then(()=>{
-      this.navCtrl.setRoot("FunctionHallListPage");
+      this.navCtrl.setRoot("AfhImagesPage",{name : this.name});
       loading.dismiss();
     })
   }
