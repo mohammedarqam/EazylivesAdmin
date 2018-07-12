@@ -9,13 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FunctionDetailsPage {
 
-  function =  this.navParams.get("function"); 
+  functionHall =  this.navParams.get("factionHall"); 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FunctionDetailsPage');
+  ionViewDidEnter() {
+    console.log(this.functionHall);
   }
 
 }

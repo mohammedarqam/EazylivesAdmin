@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "HomePage";
+  rootPage: any = "MainLoginPage";
   activePage: any;
 
 
